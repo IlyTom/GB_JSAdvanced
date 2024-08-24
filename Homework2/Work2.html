@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система отзывов</title>
+</head>
+
+<body>
+    <h1>Отзывы</h1>
+    <textarea id="reviewInput" placeholder="Введите ваш отзыв..."></textarea><br>
+    <button id="submitReview">Отправить отзыв</button>
+    <div id="reviewsContainer"></div>
+
+    <script>
+        const initialData = [
+            {
+                product: "Apple iPhone 13",
+                reviews: [
+                    { id: "1", text: "Отличный телефон! Батарея держится долго." },
+                    { id: "2", text: "Камера супер, фото выглядят просто потрясающе." },
+                ],
+            },
+            {
+                product: "Samsung Galaxy Z Fold 3",
+                reviews: [
+                    { id: "3", text: "Интересный дизайн, но дорогой." },
+                ],
+            },
+            {
+                product: "Sony PlayStation 5",
+                reviews: [
+                    { id: "4", text: "Люблю играть на PS5, графика на высоте." },
+                ],
+            },
+        ];
+
+        const reviewsContainer = document.getElementById('reviewsContainer');
+        initialData.forEach(product => {
+            product.reviews.forEach(review => {
+                const p = document.createElement('p');
+                p.textContent = review.text;
+                reviewsContainer.appendChild(p);
+            });
+        });
+
+        document.getElementById('submitReview').addEventListener('click', () => {
+            const reviewInput = document.getElementById('reviewInput').value;
+            try {
+                addReview(reviewInput);
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        function addReview(text) {
+            if (text.length < 50 || text.length > 500) {
+                throw new Error("Отзыв должен содержать от 50 до 500 символов.");
+            }
+            const p = document.createElement('p');
+            p.textContent = text;
+            reviewsContainer.appendChild(p);
+            document.getElementById('reviewInput').value = ''; // Очистить текстовое поле  
+        }  
+    </script>
+</body>
+
+</html>
