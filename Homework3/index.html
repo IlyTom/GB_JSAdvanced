@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Отзывы о продуктах</title>  
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="style.css">  
+</head>
+<body class="bg-gray-100 p-5">  
+    <h1 class="text-2xl font-bold mb-5">Добавить отзыв о продукте</h1>  
+    <div class="mb-5">  
+        <input id="productName" type="text" placeholder="Название продукта" class="border p-2 w-full mb-2" />  
+        <textarea id="reviewText" placeholder="Ваш отзыв" class="border p-2 w-full mb-2"></textarea>  
+        <button onclick="addReview()" class="bg-blue-500 text-white p-2">Добавить отзыв</button>  
+    </div>  
+
+    <h2 class="text-xl font-bold mb-5">Отзывы о продуктах</h2>  
+    <div id="reviewsList" class="space-y-4"></div>
+    <script src="script.js"></script>
+</body>
+</html>
